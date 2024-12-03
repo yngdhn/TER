@@ -28,13 +28,11 @@ class EmotionDataset(torch.utils.data.Dataset):
             "labels": torch.tensor(label, dtype=torch.long),
         }
 
-# 데이터 로드 및 전처리
 def load_and_preprocess_data(file_path, label_map):
     data = pd.read_csv(file_path)
     texts = data["Text"].tolist()
     labels = [label_map[label] for label in data["Label"].tolist()]
     return texts, labels
 
-# 데이터 분리
 def split_data(texts, labels, test_size=0.1, random_state=42):
     return train_test_split(texts, labels, test_size=test_size, random_state=random_state)
