@@ -110,7 +110,7 @@ def train(model, texts, labels, model_config, model_path, device):
     return model
 
 def train_single_transfer_RoBERTa(device):
-    model = SingleTransferRoBERTa
+    model = SingleTransferRoBERTa()
     model_config = SingleTransferRoBERTaConfig()
     texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA, model_config.EMOTIONS)
     model_path = Paths.SINGLE_ROBERTA
@@ -120,7 +120,7 @@ def train_single_transfer_RoBERTa(device):
     print("=== single transfer RoBERTa training completed ===")
 
 def train_double_transfer_BERT(device):
-    model = DoubleTransferBERT
+    model = DoubleTransferBERT()
     model_config = DoubleTransferBERTConfig()
     texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA, model_config.EMOTIONS)
     model_path = Paths.DOUBLE_BERT
