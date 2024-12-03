@@ -1,18 +1,19 @@
 import torch.nn as nn
 from transformers import AutoModel
-from config import SingleTransferRobertaConfig, DoubleTransferBertConfig
 
-class SingleTransferRoberta(nn.Module):
+from config import SingleTransferRoBERTaConfig, DoubleTransferBERTConfig
+
+class SingleTransferRoBERTa(nn.Module):
     def __init__(self):
         super().__init__()
-        self.singleRoberta = AutoModel.from_pretrained(SingleTransferRobertaConfig.MODEL_NAME)
-        self.dropout = nn.Dropout(SingleTransferRobertaConfig.DROPOUT)
-        self.classifier = nn.Linear(self.singleRoberta.config.hidden_size, SingleTransferRobertaConfig.NUM_LABELS)
+        self.singleRoberta = AutoModel.from_pretrained(SingleTransferRoBERTaConfig.MODEL_NAME)
+        self.dropout = nn.Dropout(SingleTransferRoBERTaConfig.DROPOUT)
+        self.classifier = nn.Linear(self.singleRoberta.config.hidden_size, SingleTransferRoBERTaConfig.NUM_LABELS)
     
     def forward(self, input_ids, attention_mask, labels=None):
             outputs = self.singleRoberta(
-                input_ids=input_ids.to(self.singleRoberta.device),
-                attention_mask=attention_mask.to(self.singleRoberta.device)
+                input_ids=input_ids,
+                attention_mask=attention_mask
             )
             cls_output = outputs.last_hidden_state[:, 0, :]
             cls_output = self.dropout(cls_output)
@@ -25,12 +26,12 @@ class SingleTransferRoberta(nn.Module):
 
             return logits
 
-class DoubleTransferBert(nn.Module):
+class DoubleTransferBERT(nn.Module):
     def __init__(self):
         super().__init__()
-        self.doubleBert = AutoModel.from_pretrained(DoubleTransferBertConfig.MODEL_NAME)
-        self.dropout = nn.Dropout(DoubleTransferBertConfig.DROPOUT)
-        self.classifier = nn.Linear(self.doubleBert.config.hidden_size, DoubleTransferBertConfig.NUM_LABELS)
+        self.doubleBert = AutoModel.from_pretrained(DoubleTransferBERTConfig.MODEL_NAME)
+        self.dropout = nn.Dropout(DoubleTransferBERTConfig.DROPOUT)
+        self.classifier = nn.Linear(self.doubleBert.config.hidden_size, DoubleTransferBERTConfig.NUM_LABELS)
 
     def forward(self, input_ids, attention_mask, labels = None):
         outputs = self.doubleBert(
