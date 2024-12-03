@@ -5,18 +5,44 @@ class Paths:
     SINGLE_ROBERTA = "models/single_transfer_RoBERTa.pt"
     DOUBLE_BERT = "models/double_transfer_BERT.pt"
 
-class SingleTransferRobertaConfig:
+class SingleTransferRoBERTaConfig:
     MODEL_NAME = "roberta-base"
     NUM_LABELS = 5
     DROPOUT = 0.1
     MAX_LENGTH = 128
 
+    EPOCHS = 10
+    BATCH_SIZE = 128
+
+    # optimizer
+    LEARNING_RATE = 0.05
+    MOMENTUM = 0.9
+
+    # scheduler
+    STEP_SIZE = 10
+    GAMMA = 0.1
+
+    PATIENCE = 3
+
     EMOTIONS = {"Neutral": 0, "Angry": 1, "Happy": 2, "Sad": 3, "Surprise": 4}
 
-class DoubleTransferBertConfig:
+class DoubleTransferBERTConfig:
     MODEL_NAME = "nlptown/bert-base-multilingual-uncased-sentiment"
     NUM_LABELS = 5
     DROPOUT = 0.1
     MAX_LENGTH = 128
+
+    EPOCHS = 10
+    BATCH_SIZE = 128
+
+    # optimizer
+    LEARNING_RATE = 0.05
+    MOMENTUM = 0.9
+
+    # scheduler
+    STEP_SIZE = 10
+    GAMMA = 0.1
+
+    PATIENCE = 3
     
     EMOTIONS = {"Neutral": 0, "Angry": 1, "Happy": 2, "Sad": 3, "Surprise": 4}
