@@ -1,7 +1,7 @@
 import torch.nn as nn
 from transformers import AutoModel
 
-from config import SingleTransferRoBERTaConfig, SingleTransferBERTConfig, DoubleTransferBERTConfig
+from config import SingleTransferRoBERTaConfig, SingleTransferBERTConfig, SingleTransferMLBERTConfig, DoubleTransferMLBERTConfig
 
 class SingleTransferRoBERTa(nn.Module):
     def __init__(self):
@@ -48,13 +48,37 @@ class SingleTransferBERT(nn.Module):
             return loss, logits
 
         return logits
-
-class DoubleTransferBERT(nn.Module):
+    
+class SingleTransferMLBERT(nn.Module):
     def __init__(self):
         super().__init__()
-        self.doubleBert = AutoModel.from_pretrained(DoubleTransferBERTConfig.MODEL_NAME)
-        self.dropout = nn.Dropout(DoubleTransferBERTConfig.DROPOUT)
-        self.classifier = nn.Linear(self.doubleBert.config.hidden_size, DoubleTransferBERTConfig.NUM_LABELS)
+        self.singleMLBert = AutoModel.from_pretrained(SingleTransferMLBERTConfig.MODEL_NAME)
+        self.dropout = nn.Dropout(SingleTransferMLBERTConfig.DROPOUT)
+        self.classifier = nn.Linear(self.doubleBert.config.hidden_size, SingleTransferMLBERTConfig.NUM_LABELS)
+
+    def forward(self, input_ids, attention_mask, labels = None):
+        outputs = self.singleMLBert(
+            input_ids=input_ids,
+            attention_mask=attention_mask
+        )
+        cls_output = outputs.last_hidden_state[:, 0, :]
+        cls_output = self.dropout(cls_output)
+        logits = self.classifier(cls_output)
+
+        if labels is not None:
+            loss_fn = nn.CrossEntropyLoss()
+            loss = loss_fn(logits, labels)
+            return loss, logits
+        
+        return logits
+
+
+class DoubleTransferMLBERT(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.doubleBert = AutoModel.from_pretrained(DoubleTransferMLBERTConfig.MODEL_NAME)
+        self.dropout = nn.Dropout(DoubleTransferMLBERTConfig.DROPOUT)
+        self.classifier = nn.Linear(self.doubleBert.config.hidden_size, DoubleTransferMLBERTConfig.NUM_LABELS)
 
     def forward(self, input_ids, attention_mask, labels = None):
         outputs = self.doubleBert(
