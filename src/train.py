@@ -4,9 +4,9 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from transformers import AutoTokenizer
 
-from config import Paths, SingleTransferRoBERTaConfig, DoubleTransferBERTConfig
+from config import Paths, SingleTransferRoBERTaConfig, SingleTransferBERTConfig, DoubleTransferBERTConfig
 from utils import EmotionDataset, load_and_preprocess_data, split_data
-from models import SingleTransferRoBERTa, DoubleTransferBERT
+from models import SingleTransferRoBERTa, SingleTransferBERT, DoubleTransferBERT
 
 def train(model, texts, labels, model_config, model_path, device):
     train_texts, val_texts, train_labels, val_labels = split_data(texts=texts, labels=labels)
@@ -110,6 +110,16 @@ def train_single_transfer_RoBERTa(device):
     train(model, texts, labels, model_config, model_path, device)
     print("=== single transfer RoBERTa training completed ===")
 
+def train_single_transfer_BERT(device):
+    model = SingleTransferBERT()
+    model_config = SingleTransferBERTConfig()
+    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA, model_config.EMOTIONS)
+    model_path = Paths.SINGLE_BERT
+
+    print("=== train single transfer BERT ===")
+    train(model, texts, labels, model_config, model_path, device)
+    print("=== single transfer BERT training completed ===")
+
 def train_double_transfer_BERT(device):
     model = DoubleTransferBERT()
     model_config = DoubleTransferBERTConfig()
@@ -130,6 +140,7 @@ def main():
     print("device:", device)
 
     train_single_transfer_RoBERTa(device)
+    train_single_transfer_BERT(device)
     train_double_transfer_BERT(device)
 
 if __name__ == "__main__":
