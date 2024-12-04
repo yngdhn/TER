@@ -54,7 +54,7 @@ class SingleTransferMLBERT(nn.Module):
         super().__init__()
         self.singleMLBert = AutoModel.from_pretrained(SingleTransferMLBERTConfig.MODEL_NAME)
         self.dropout = nn.Dropout(SingleTransferMLBERTConfig.DROPOUT)
-        self.classifier = nn.Linear(self.doubleBert.config.hidden_size, SingleTransferMLBERTConfig.NUM_LABELS)
+        self.classifier = nn.Linear(self.singleMLBert.config.hidden_size, SingleTransferMLBERTConfig.NUM_LABELS)
 
     def forward(self, input_ids, attention_mask, labels = None):
         outputs = self.singleMLBert(
