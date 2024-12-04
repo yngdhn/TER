@@ -35,7 +35,7 @@ class SingleTransferRoBERTaConfig:
     LEARNING_RATE = 2e-5
     WEIGHT_DECAY = 0.01
 
-    PATIENCE = 2
+    PATIENCE = 3
 
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
 
@@ -51,7 +51,7 @@ class SingleTransferBERTConfig:
     LEARNING_RATE = 2e-5
     WEIGHT_DECAY = 0.01
 
-    PATIENCE = 2
+    PATIENCE = 3
 
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
 
@@ -67,7 +67,7 @@ class SingleTransferMLBERTConfig:
     LEARNING_RATE = 2e-5
     WEIGHT_DECAY = 0.01
 
-    PATIENCE = 2
+    PATIENCE = 3
 
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
 
@@ -83,6 +83,6 @@ class DoubleTransferMLBERTConfig:
     LEARNING_RATE = 2e-5
     WEIGHT_DECAY = 0.01
 
-    PATIENCE = 2
+    PATIENCE = 3
     
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
