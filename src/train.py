@@ -20,11 +20,9 @@ def train(model, texts, labels, model_config, model_path, device):
 
     model = model.to(device)
 
-    OPTIMIZER = torch.optim.SGD(model.parameters(), lr=model_config.LEARNING_RATE, momentum=model_config.MOMENTUM)
+    OPTIMIZER = torch.optim.AdamW(model.parameters(), lr=model_config.LEARNING_RATE, weight_decay=model_config.WEIGHT_DECAY)
     SCHEDULER = torch.optim.lr_scheduler.StepLR(OPTIMIZER, step_size=model_config.STEP_SIZE, gamma=model_config.GAMMA)
-
-    def loss_fn(predictions, targets):
-        return nn.CrossEntropyLoss()(input=predictions, target=targets)
+    loss_fn = nn.CrossEntropyLoss()
     
     # checkpoint
     model_path = model_path
@@ -51,18 +49,14 @@ def train(model, texts, labels, model_config, model_path, device):
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["labels"].to(device)
 
-            # forward pass
+            OPTIMIZER.zero_grad()
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             loss = loss_fn(outputs, labels)
-            
-            # back propagation
-            OPTIMIZER.zero_grad()
             loss.backward()
+        
             OPTIMIZER.step()
-
+            SCHEDULER.step()
             train_loss += loss.item()
-            
-        SCHEDULER.step()
 
         model.eval()
         val_loss = 0.0
