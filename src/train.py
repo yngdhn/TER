@@ -23,7 +23,6 @@ def train(model, texts, labels, model_config, model_path, device):
     OPTIMIZER = torch.optim.AdamW(model.parameters(), lr=model_config.LEARNING_RATE, weight_decay=model_config.WEIGHT_DECAY)
     loss_fn = nn.CrossEntropyLoss()
     
-    # checkpoint
     model_path = model_path
     try:
         checkpoint = torch.load(model_path)
@@ -35,7 +34,6 @@ def train(model, texts, labels, model_config, model_path, device):
         start_epoch = 0
         print("No checkpoint found. Starting training from scratch...")
 
-    # train
     logs = {}
     best_val_loss = float("inf")
     patience_counter = 0
@@ -79,7 +77,7 @@ def train(model, texts, labels, model_config, model_path, device):
         
         val_loss /= len(val_loader)
         logs['val_loss'] = val_loss
-        
+
         accuracy = (correct / total) * 100
         logs['accuracy'] = accuracy
 
