@@ -25,7 +25,7 @@ class SingleTransferRoBERTaConfig:
 
     PATIENCE = 3
 
-    EMOTIONS = {"Neutral": 0, "Angry": 1, "Happy": 2, "Sad": 3, "Surprise": 4}
+    EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
 
 class DoubleTransferBERTConfig:
     MODEL_NAME = "nlptown/bert-base-multilingual-uncased-sentiment"
@@ -46,5 +46,3 @@ class DoubleTransferBERTConfig:
     GAMMA = 0.1
 
     PATIENCE = 3
-    
-    EMOTIONS = {"Neutral": 0, "Angry": 1, "Happy": 2, "Sad": 3, "Surprise": 4}
