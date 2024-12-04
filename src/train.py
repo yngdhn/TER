@@ -56,6 +56,9 @@ def train(model, texts, labels, model_config, model_path, device):
             OPTIMIZER.step()
             train_loss += loss.item()
 
+        train_loss /= len(train_loader)
+        logs['train_loss'] = train_loss
+
         model.eval()
         val_loss = 0.0
         correct = 0
@@ -75,10 +78,9 @@ def train(model, texts, labels, model_config, model_path, device):
                 correct += (predicted == labels).sum().item()
         
         val_loss /= len(val_loader)
-        accuracy = (correct / total) * 100
-
-        logs['train_loss'] = train_loss / len(train_loader)
         logs['val_loss'] = val_loss
+        
+        accuracy = (correct / total) * 100
         logs['accuracy'] = accuracy
 
         print(f"Epoch {epoch+1}/{model_config.EPOCHS}, "
