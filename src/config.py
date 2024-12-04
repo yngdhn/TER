@@ -17,7 +17,6 @@ class SingleTransferRoBERTaConfig:
     BATCH_SIZE = 64
 
     LEARNING_RATE = 2e-5
-    MOMENTUM = 0.9
     WEIGHT_DECAY = 0.01
 
     PATIENCE = 3
@@ -34,7 +33,6 @@ class DoubleTransferBERTConfig:
     BATCH_SIZE = 64
 
     LEARNING_RATE = 2e-5
-    MOMENTUM = 0.9
     WEIGHT_DECAY = 0.01
 
     PATIENCE = 3
