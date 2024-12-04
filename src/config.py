@@ -1,3 +1,5 @@
+# dataset from: https://www.kaggle.com/datasets/nelgiriyewithana/emotions/data
+
 class Paths:
     TRAIN_DATA = "dataset/train_data.csv"
     TEST_DATA = "dataset/test_data.csv"
@@ -12,7 +14,7 @@ class SingleTransferRoBERTaConfig:
     MAX_LENGTH = 512
 
     EPOCHS = 10
-    BATCH_SIZE = 16
+    BATCH_SIZE = 64
 
     # optimizer
     LEARNING_RATE = 2e-5
@@ -34,7 +36,7 @@ class DoubleTransferBERTConfig:
     MAX_LENGTH = 512
 
     EPOCHS = 10
-    BATCH_SIZE = 16
+    BATCH_SIZE = 64
 
     # optimizer
     LEARNING_RATE = 2e-5
