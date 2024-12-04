@@ -9,14 +9,15 @@ class SingleTransferRoBERTaConfig:
     MODEL_NAME = "roberta-base"
     NUM_LABELS = 5
     DROPOUT = 0.1
-    MAX_LENGTH = 128
+    MAX_LENGTH = 512
 
     EPOCHS = 10
-    BATCH_SIZE = 128
+    BATCH_SIZE = 16
 
     # optimizer
-    LEARNING_RATE = 0.05
+    LEARNING_RATE = 2e-5
     MOMENTUM = 0.9
+    WEIGHT_DECAY = 0.01
 
     # scheduler
     STEP_SIZE = 10
@@ -30,14 +31,15 @@ class DoubleTransferBERTConfig:
     MODEL_NAME = "nlptown/bert-base-multilingual-uncased-sentiment"
     NUM_LABELS = 5
     DROPOUT = 0.1
-    MAX_LENGTH = 128
+    MAX_LENGTH = 512
 
     EPOCHS = 10
-    BATCH_SIZE = 128
+    BATCH_SIZE = 16
 
     # optimizer
-    LEARNING_RATE = 0.05
+    LEARNING_RATE = 2e-5
     MOMENTUM = 0.9
+    WEIGHT_DECAY = 0.01
 
     # scheduler
     STEP_SIZE = 10
