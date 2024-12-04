@@ -21,7 +21,6 @@ def train(model, texts, labels, model_config, model_path, device):
     model = model.to(device)
 
     OPTIMIZER = torch.optim.AdamW(model.parameters(), lr=model_config.LEARNING_RATE, weight_decay=model_config.WEIGHT_DECAY)
-    SCHEDULER = torch.optim.lr_scheduler.StepLR(OPTIMIZER, step_size=model_config.STEP_SIZE, gamma=model_config.GAMMA)
     loss_fn = nn.CrossEntropyLoss()
     
     # checkpoint
@@ -55,14 +54,15 @@ def train(model, texts, labels, model_config, model_path, device):
             loss.backward()
         
             OPTIMIZER.step()
-            SCHEDULER.step()
             train_loss += loss.item()
+
+        train_loss /= len(train_loader)
+        logs['train_loss'] = train_loss
 
         model.eval()
         val_loss = 0.0
         correct = 0
         total = 0
-
         with torch.no_grad():
             for batch in tqdm(val_loader, desc="Validation"):
                 input_ids = batch["input_ids"].to(device)
@@ -71,17 +71,16 @@ def train(model, texts, labels, model_config, model_path, device):
 
                 outputs = model(input_ids=input_ids, attention_mask=attention_mask)
                 loss = loss_fn(outputs, labels)
-
                 val_loss += loss.item()
+
                 _, predicted = torch.max(outputs, 1)
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
         
-        avg_val_loss = val_loss / len(val_loader)
+        val_loss /= len(val_loader)
+        logs['val_loss'] = val_loss
+        
         accuracy = (correct / total) * 100
-
-        logs['train_loss'] = train_loss / len(train_loader)
-        logs['val_loss'] = avg_val_loss
         logs['accuracy'] = accuracy
 
         print(f"Epoch {epoch+1}/{model_config.EPOCHS}, "
@@ -89,8 +88,8 @@ def train(model, texts, labels, model_config, model_path, device):
               f"Validation Loss: {logs['val_loss']:.4f}, "
               f"Accuracy: {accuracy:.2f}%")
                 
-        if avg_val_loss < best_val_loss:
-            best_val_loss = avg_val_loss
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
             patience_counter = 0
             torch.save({"model_state_dict": model.state_dict(),
                         "optimizer_state_dict": OPTIMIZER.state_dict(),
