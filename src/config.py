@@ -16,14 +16,9 @@ class SingleTransferRoBERTaConfig:
     EPOCHS = 10
     BATCH_SIZE = 64
 
-    # optimizer
     LEARNING_RATE = 2e-5
     MOMENTUM = 0.9
     WEIGHT_DECAY = 0.01
-
-    # scheduler
-    STEP_SIZE = 10
-    GAMMA = 0.1
 
     PATIENCE = 3
 
@@ -38,14 +33,9 @@ class DoubleTransferBERTConfig:
     EPOCHS = 10
     BATCH_SIZE = 64
 
-    # optimizer
     LEARNING_RATE = 2e-5
     MOMENTUM = 0.9
     WEIGHT_DECAY = 0.01
-
-    # scheduler
-    STEP_SIZE = 10
-    GAMMA = 0.1
 
     PATIENCE = 3
     
