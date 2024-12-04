@@ -7,7 +7,7 @@ class Paths:
 
 class SingleTransferRoBERTaConfig:
     MODEL_NAME = "roberta-base"
-    NUM_LABELS = 5
+    NUM_LABELS = 6
     DROPOUT = 0.1
     MAX_LENGTH = 512
 
@@ -29,7 +29,7 @@ class SingleTransferRoBERTaConfig:
 
 class DoubleTransferBERTConfig:
     MODEL_NAME = "nlptown/bert-base-multilingual-uncased-sentiment"
-    NUM_LABELS = 5
+    NUM_LABELS = 6
     DROPOUT = 0.1
     MAX_LENGTH = 512
 
@@ -46,3 +46,5 @@ class DoubleTransferBERTConfig:
     GAMMA = 0.1
 
     PATIENCE = 3
+    
+    EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
