@@ -90,7 +90,7 @@ class DoubleTransferMLBERTConfig:
 class PredictionConfig:
     MAX_LENGTH = 512
 
-    BATCH_SIZE = 64
+    BATCH_SIZE = 512
     
     MODEL_PATHS = {
         "single_transfer_RoBERTa_100p": Paths.SINGLE_ROBERTA_100p,
