@@ -24,7 +24,7 @@ class Paths:
     DOUBLE_MLBERT_1p = "models/double_transfer_MLBERT_1p.pt"
 
 class SingleTransferRoBERTaConfig:
-    MODEL_NAME = "roberta-base"
+    MODEL_NAME = "FacebookAI/roberta-base"
     NUM_LABELS = 6
     DROPOUT = 0.1
     MAX_LENGTH = 512
@@ -40,7 +40,7 @@ class SingleTransferRoBERTaConfig:
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
 
 class SingleTransferBERTConfig:
-    MODEL_NAME = "bert-base-uncased"
+    MODEL_NAME = "google-bert/bert-base-uncased"
     NUM_LABELS = 6
     DROPOUT = 0.1
     MAX_LENGTH = 512
@@ -56,7 +56,7 @@ class SingleTransferBERTConfig:
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
 
 class SingleTransferMLBERTConfig:
-    MODEL_NAME = "bert-base-multilingual-uncased"
+    MODEL_NAME = "google-bert/bert-base-multilingual-uncased"
     NUM_LABELS = 6
     DROPOUT = 0.1
     MAX_LENGTH = 512
@@ -72,7 +72,7 @@ class SingleTransferMLBERTConfig:
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
 
 class DoubleTransferMLBERTConfig:
-    MODEL_NAME = "bert-base-multilingual-uncased-sentiment"
+    MODEL_NAME = "nlptown/bert-base-multilingual-uncased-sentiment"
     NUM_LABELS = 6
     DROPOUT = 0.1
     MAX_LENGTH = 512
