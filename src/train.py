@@ -4,9 +4,20 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from transformers import AutoTokenizer
 
-from config import Paths, SingleTransferRoBERTaConfig, SingleTransferBERTConfig, SingleTransferMLBERTConfig, DoubleTransferMLBERTConfig
+from config import (
+    Paths,
+    SingleTransferRoBERTaConfig,
+    SingleTransferBERTConfig,
+    SingleTransferMLBERTConfig,
+    DoubleTransferMLBERTConfig
+)
 from utils import EmotionDataset, load_and_preprocess_data, split_data
-from models import SingleTransferRoBERTa, SingleTransferBERT, SingleTransferMLBERT, DoubleTransferMLBERT
+from models import (
+    SingleTransferRoBERTa,
+    SingleTransferBERT,
+    SingleTransferMLBERT,
+    DoubleTransferMLBERT
+)
 
 def train(model, texts, labels, model_config, model_path, device):
     train_texts, val_texts, train_labels, val_labels = split_data(texts=texts, labels=labels)
