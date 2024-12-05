@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader
 import pandas as pd
 from tqdm import tqdm
 from transformers import AutoTokenizer
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 from config import (
     Paths,
@@ -79,6 +80,26 @@ def evaluation(device):
             test_data.to_csv(result_file_path, index=False)
             print(f"Predictions saved to {result_file_path}")
 
+def calculate_scores(folder_path):
+    file_names = [f for f in os.listdir(folder_path) if f.endswith(".csv")]
+    file_names.sort()
+
+    for file_name in file_names:
+        file_path = os.path.join(folder_path, file_name)
+        
+        df = pd.read_csv(file_path)
+        
+        y_true = df['Label']
+        y_pred = df['Prediction']
+        
+        accuracy = accuracy_score(y_true, y_pred)
+        precision = precision_score(y_true, y_pred, average='macro', zero_division=0)
+        recall = recall_score(y_true, y_pred, average='macro', zero_division=0)
+        f1 = f1_score(y_true, y_pred, average='macro', zero_division=0)
+        
+        print(f"{file_name} scores:")
+        print(f"Accuracy: {accuracy:.4f}, Precision: {precision:.4f}, Recall: {recall:.4f}, F1-score: {f1:.4f}\n")
+
 def main():
     if torch.cuda.is_available():
         device = torch.device("cuda")
@@ -89,6 +110,7 @@ def main():
     print("device:", device)
 
     evaluation(device)
+    calculate_scores("predictions")
 
 if __name__ == "__main__":
     main()
