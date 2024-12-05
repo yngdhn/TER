@@ -1,7 +1,12 @@
 import torch.nn as nn
 from transformers import AutoModel
 
-from config import SingleTransferRoBERTaConfig, SingleTransferBERTConfig, SingleTransferMLBERTConfig, DoubleTransferMLBERTConfig
+from config import (
+    SingleTransferRoBERTaConfig,
+    SingleTransferBERTConfig,
+    SingleTransferMLBERTConfig,
+    DoubleTransferMLBERTConfig
+)
 
 class SingleTransferRoBERTa(nn.Module):
     def __init__(self):
