@@ -86,3 +86,28 @@ class DoubleTransferMLBERTConfig:
     PATIENCE = 3
     
     EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
+
+class PredictionConfig:
+    MAX_LENGTH = 512
+
+    BATCH_SIZE = 64
+    
+    MODEL_PATHS = {
+        "single_transfer_RoBERTa_100p": Paths.SINGLE_ROBERTA_100p,
+        "single_transfer_RoBERTa_10p": Paths.SINGLE_ROBERTA_10p,
+        "single_transfer_RoBERTa_1p": Paths.SINGLE_ROBERTA_1p,
+
+        "single_transfer_BERT_100p": Paths.SINGLE_BERT_100p,
+        "single_transfer_BERT_10p": Paths.SINGLE_BERT_10p,
+        "single_transfer_BERT_1p": Paths.SINGLE_BERT_1p,
+
+        "single_transfer_MLBERT_100p": Paths.SINGLE_MLBERT_100p,
+        "single_transfer_MLBERT_10p": Paths.SINGLE_MLBERT_10p,
+        "single_transfer_MLBERT_1p": Paths.SINGLE_MLBERT_1p,
+
+        "double_transfer_MLBERT_100p": Paths.DOUBLE_MLBERT_100p,
+        "double_transfer_MLBERT_10p": Paths.DOUBLE_MLBERT_10p,
+        "double_transfer_MLBERT_1p": Paths.DOUBLE_MLBERT_1p
+    }
+
+    EMOTIONS = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
