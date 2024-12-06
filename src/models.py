@@ -5,7 +5,9 @@ from config import (
     SingleTransferRoBERTaConfig,
     SingleTransferBERTConfig,
     SingleTransferMLBERTConfig,
-    DoubleTransferMLBERTConfig
+    DoubleTransferMLBERTConfig,
+    DistilBERTConfig,
+    LargeBERTConfig,
 )
 
 class BaseModel(nn.Module):
@@ -15,7 +17,7 @@ class BaseModel(nn.Module):
         self.dropout = nn.Dropout(model_config.DROPOUT)
         self.classifier = nn.Linear(self.model.config.hidden_size, model_config.NUM_LABELS)
     
-    def forward(self, input_ids, attention_mask, labels=None):
+    def forward(self, input_ids, attention_mask):
         outputs = self.model(
             input_ids=input_ids,
             attention_mask=attention_mask
@@ -24,31 +26,28 @@ class BaseModel(nn.Module):
         cls_output = self.dropout(cls_output)
         logits = self.classifier(cls_output)
 
-        if labels is not None:
-            loss_fn = nn.CrossEntropyLoss()
-            loss = loss_fn(logits, labels)
-            return loss, logits
+        return logits
 
 class SingleTransferRoBERTa(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=SingleTransferRoBERTaConfig
-        )
+        super().__init__(model_config=SingleTransferRoBERTaConfig)
 
 class SingleTransferBERT(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=SingleTransferBERTConfig
-        )
+        super().__init__(model_config=SingleTransferBERTConfig)
 
 class SingleTransferMLBERT(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=SingleTransferMLBERTConfig
-        )
+        super().__init__(model_config=SingleTransferMLBERTConfig)
 
 class DoubleTransferMLBERT(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=DoubleTransferMLBERTConfig
-        )
+        super().__init__(model_config=DoubleTransferMLBERTConfig)
+
+class DistilBERT(BaseModel):
+    def __init__(self):
+        super().__init__(model_config=DistilBERTConfig)
+
+class LargeBERT(BaseModel):
+    def __init__(self):
+        super().__init__(model_config=LargeBERTConfig)

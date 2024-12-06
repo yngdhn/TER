@@ -1,10 +1,10 @@
 # Training Result
 
-## single transfer RoBERTa
+## SingleTransferRoBERTa
 
 ### 100p
 ```
-=== train single transfer RoBERTa - 100p ===
+=== train SingleTransferRoBERTa - 100p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 254/254 [04:54<00:00,  1.16s/it]
@@ -38,12 +38,12 @@ Training Epoch 10/10: 100% 254/254 [04:53<00:00,  1.16s/it]
 Validation: 100% 29/29 [00:10<00:00,  2.69it/s]
 Epoch 10/10, Train Loss: 0.0518, Validation Loss: 0.1074, Accuracy: 96.67%
 Early stopping triggered after epoch 10
-=== single transfer RoBERTa - 100p training completed ===
+=== SingleTransferRoBERTa - 100p training completed ===
 ```
 
 ### 10p
 ```
-=== train single transfer RoBERTa - 10p ===
+=== train SingleTransferRoBERTa - 10p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 26/26 [00:29<00:00,  1.13s/it]
@@ -71,12 +71,12 @@ Training Epoch 8/10: 100% 26/26 [00:29<00:00,  1.13s/it]
 Validation: 100% 3/3 [00:01<00:00,  2.77it/s]
 Epoch 8/10, Train Loss: 0.0584, Validation Loss: 0.5356, Accuracy: 85.00%
 Early stopping triggered after epoch 8
-=== single transfer RoBERTa - 10p training completed ===
+=== SingleTransferRoBERTa - 10p training completed ===
 ```
 
 ### 1p
 ```
-=== train single transfer RoBERTa - 1p ===
+=== train SingleTransferRoBERTa - 1p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 3/3 [00:02<00:00,  1.01it/s]
@@ -104,14 +104,14 @@ Training Epoch 8/10: 100% 3/3 [00:02<00:00,  1.02it/s]
 Validation: 100% 1/1 [00:00<00:00,  9.01it/s]
 Epoch 8/10, Train Loss: 1.5907, Validation Loss: 1.8340, Accuracy: 33.33%
 Early stopping triggered after epoch 8
-=== single transfer RoBERTa - 1p training completed ===
+=== SingleTransferRoBERTa - 1p training completed ===
 ```
 
-## single transfer BERT
+## SingleTransferBERT
 
 ### 100p
 ```
-=== train single transfer BERT - 100p ===
+=== train SingleTransferBERT - 100p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 254/254 [04:54<00:00,  1.16s/it]
@@ -139,12 +139,12 @@ Training Epoch 8/10: 100% 254/254 [04:54<00:00,  1.16s/it]
 Validation: 100% 29/29 [00:10<00:00,  2.65it/s]
 Epoch 8/10, Train Loss: 0.0274, Validation Loss: 0.1169, Accuracy: 96.61%
 Early stopping triggered after epoch 8
-=== single transfer BERT - 100p training completed ===
+=== SingleTransferBERT - 100p training completed ===
 ```
 
 ### 10p
 ```
-=== train single transfer BERT - 10p ===
+=== train SingleTransferBERT - 10p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 26/26 [00:29<00:00,  1.13s/it]
@@ -175,12 +175,12 @@ Training Epoch 9/10: 100% 26/26 [00:29<00:00,  1.13s/it]
 Validation: 100% 3/3 [00:01<00:00,  2.73it/s]
 Epoch 9/10, Train Loss: 0.0159, Validation Loss: 0.4608, Accuracy: 88.89%
 Early stopping triggered after epoch 9
-=== single transfer BERT - 10p training completed ===
+=== SingleTransferBERT - 10p training completed ===
 ```
 
 ### 1p
 ```
-=== train single transfer BERT - 1p ===
+=== train SingleTransferBERT - 1p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 3/3 [00:02<00:00,  1.01it/s]
@@ -213,14 +213,14 @@ Epoch 9/10, Train Loss: 1.0525, Validation Loss: 1.6299, Accuracy: 22.22%
 Training Epoch 10/10: 100% 3/3 [00:02<00:00,  1.00it/s]
 Validation: 100% 1/1 [00:00<00:00,  8.94it/s]
 Epoch 10/10, Train Loss: 0.9143, Validation Loss: 1.6321, Accuracy: 22.22%
-=== single transfer BERT - 1p training completed ===
+=== SingleTransferBERT - 1p training completed ===
 ```
 
-## single transfer MLBERT
+## SingleTransferMLBERT
 
 ### 100p
 ```
-=== train single transfer MLBERT - 100p ===
+=== train SingleTransferMLBERT - 100p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 254/254 [04:57<00:00,  1.17s/it]
@@ -242,12 +242,12 @@ Training Epoch 6/10: 100% 254/254 [04:55<00:00,  1.16s/it]
 Validation: 100% 29/29 [00:10<00:00,  2.65it/s]
 Epoch 6/10, Train Loss: 0.0609, Validation Loss: 0.1014, Accuracy: 96.89%
 Early stopping triggered after epoch 6
-=== single transfer MLBERT - 100p training completed ===
+=== SingleTransferMLBERT - 100p training completed ===
 ```
 
 ### 10p
 ```
-=== train single transfer MLBERT - 10p ===
+=== train SingleTransferMLBERT - 10p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 26/26 [00:29<00:00,  1.14s/it]
@@ -275,12 +275,12 @@ Training Epoch 8/10: 100% 26/26 [00:29<00:00,  1.14s/it]
 Validation: 100% 3/3 [00:01<00:00,  2.73it/s]
 Epoch 8/10, Train Loss: 0.0551, Validation Loss: 0.4976, Accuracy: 87.78%
 Early stopping triggered after epoch 8
-=== single transfer MLBERT - 10p training completed ===
+=== SingleTransferMLBERT - 10p training completed ===
 ```
 
 ### 1p
 ```
-=== train single transfer MLBERT - 1p ===
+=== train SingleTransferMLBERT - 1p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 3/3 [00:02<00:00,  1.01it/s]
@@ -313,14 +313,14 @@ Epoch 9/10, Train Loss: 1.0677, Validation Loss: 1.6764, Accuracy: 50.00%
 Training Epoch 10/10: 100% 3/3 [00:03<00:00,  1.01s/it]
 Validation: 100% 1/1 [00:00<00:00,  8.88it/s]
 Epoch 10/10, Train Loss: 0.9485, Validation Loss: 1.6972, Accuracy: 50.00%
-=== single transfer MLBERT - 1p training completed ===
+=== SingleTransferMLBERT - 1p training completed ===
 ```
 
-## double transfer MLBERT
+## DoubleTransferMLBERT
 
 ### 100p
 ```
-=== train double transfer MLBERT - 100p ===
+=== train DoubleTransferMLBERT - 100p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 254/254 [04:57<00:00,  1.17s/it]
@@ -348,12 +348,12 @@ Training Epoch 8/10: 100% 254/254 [04:56<00:00,  1.17s/it]
 Validation: 100% 29/29 [00:10<00:00,  2.64it/s]
 Epoch 8/10, Train Loss: 0.0483, Validation Loss: 0.1046, Accuracy: 96.56%
 Early stopping triggered after epoch 8
-=== double transfer MLBERT - 100p training completed ===
+=== DoubleTransferMLBERT - 100p training completed ===
 ```
 
 ### 10p
 ```
-=== train double transfer MLBERT - 10p ===
+=== train DoubleTransferMLBERT - 10p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 26/26 [00:29<00:00,  1.14s/it]
@@ -384,12 +384,12 @@ Training Epoch 9/10: 100% 26/26 [00:29<00:00,  1.14s/it]
 Validation: 100% 3/3 [00:01<00:00,  2.73it/s]
 Epoch 9/10, Train Loss: 0.0336, Validation Loss: 0.4386, Accuracy: 89.44%
 Early stopping triggered after epoch 9
-=== double transfer MLBERT - 10p training completed ===
+=== DoubleTransferMLBERT - 10p training completed ===
 ```
 
 ### 1p
 ```
-=== train double transfer MLBERT - 1p ===
+=== train DoubleTransferMLBERT - 1p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 3/3 [00:02<00:00,  1.01it/s]
@@ -422,5 +422,33 @@ Epoch 9/10, Train Loss: 0.7774, Validation Loss: 1.6078, Accuracy: 44.44%
 Training Epoch 10/10: 100% 3/3 [00:03<00:00,  1.01s/it]
 Validation: 100% 1/1 [00:00<00:00,  8.95it/s]
 Epoch 10/10, Train Loss: 0.6162, Validation Loss: 1.6773, Accuracy: 33.33%
-=== double transfer MLBERT - 1p training completed ===
+=== DoubleTransferMLBERT - 1p training completed ===
+```
+
+## DistilBERT
+
+### 100p
+```
+```
+
+### 10p
+```
+```
+
+### 1p
+```
+```
+
+## LargeBERT
+
+### 100p
+```
+```
+
+### 10p
+```
+```
+
+### 1p
+```
 ```
