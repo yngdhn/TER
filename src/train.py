@@ -118,7 +118,7 @@ def train(model, model_config, train_data, model_path, device):
     return model
 
 def train_model(model, model_config, train_data, model_path, description: str, device):
-    print(f"=== train{description} ===")
+    print(f"=== train {description} ===")
     train(model, model_config, train_data, model_path, device)
     print(f"=== {description} training completed ===")
 
