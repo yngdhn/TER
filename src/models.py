@@ -8,15 +8,15 @@ from config import (
     DoubleTransferMLBERTConfig
 )
 
-class SingleTransferRoBERTa(nn.Module):
-    def __init__(self):
+class BaseModel(nn.Module):
+    def __init__(self, model_config):
         super().__init__()
-        self.singleRoberta = AutoModel.from_pretrained(SingleTransferRoBERTaConfig.MODEL_NAME)
-        self.dropout = nn.Dropout(SingleTransferRoBERTaConfig.DROPOUT)
-        self.classifier = nn.Linear(self.singleRoberta.config.hidden_size, SingleTransferRoBERTaConfig.NUM_LABELS)
+        self.model = AutoModel.from_pretrained(model_config.MODEL_NAME)
+        self.dropout = nn.Dropout(model_config.DROPOUT)
+        self.classifier = nn.Linear(self.model.config.hidden_size, model_config.NUM_LABELS)
     
     def forward(self, input_ids, attention_mask, labels=None):
-        outputs = self.singleRoberta(
+        outputs = self.model(
             input_ids=input_ids,
             attention_mask=attention_mask
         )
@@ -29,74 +29,26 @@ class SingleTransferRoBERTa(nn.Module):
             loss = loss_fn(logits, labels)
             return loss, logits
 
-        return logits
-
-class SingleTransferBERT(nn.Module):
+class SingleTransferRoBERTa(BaseModel):
     def __init__(self):
-        super().__init__()
-        self.singleBert = AutoModel.from_pretrained(SingleTransferBERTConfig.MODEL_NAME)
-        self.dropout = nn.Dropout(SingleTransferBERTConfig.DROPOUT)
-        self.classifier = nn.Linear(self.singleBert.config.hidden_size, SingleTransferBERTConfig.NUM_LABELS)
-
-    def forward(self, input_ids, attention_mask, labels=None):
-        outputs = self.singleBert(
-            input_ids=input_ids,
-            attention_mask=attention_mask
+        super().__init__(
+            model_config=SingleTransferRoBERTaConfig
         )
-        cls_output = outputs.last_hidden_state[:, 0, :]
-        cls_output = self.dropout(cls_output)
-        logits = self.classifier(cls_output)
 
-        if labels is not None:
-            loss_fn = nn.CrossEntropyLoss()
-            loss = loss_fn(logits, labels)
-            return loss, logits
-
-        return logits
-    
-class SingleTransferMLBERT(nn.Module):
+class SingleTransferBERT(BaseModel):
     def __init__(self):
-        super().__init__()
-        self.singleMLBert = AutoModel.from_pretrained(SingleTransferMLBERTConfig.MODEL_NAME)
-        self.dropout = nn.Dropout(SingleTransferMLBERTConfig.DROPOUT)
-        self.classifier = nn.Linear(self.singleMLBert.config.hidden_size, SingleTransferMLBERTConfig.NUM_LABELS)
-
-    def forward(self, input_ids, attention_mask, labels = None):
-        outputs = self.singleMLBert(
-            input_ids=input_ids,
-            attention_mask=attention_mask
+        super().__init__(
+            model_config=SingleTransferBERTConfig
         )
-        cls_output = outputs.last_hidden_state[:, 0, :]
-        cls_output = self.dropout(cls_output)
-        logits = self.classifier(cls_output)
 
-        if labels is not None:
-            loss_fn = nn.CrossEntropyLoss()
-            loss = loss_fn(logits, labels)
-            return loss, logits
-        
-        return logits
-
-
-class DoubleTransferMLBERT(nn.Module):
+class SingleTransferMLBERT(BaseModel):
     def __init__(self):
-        super().__init__()
-        self.doubleBert = AutoModel.from_pretrained(DoubleTransferMLBERTConfig.MODEL_NAME)
-        self.dropout = nn.Dropout(DoubleTransferMLBERTConfig.DROPOUT)
-        self.classifier = nn.Linear(self.doubleBert.config.hidden_size, DoubleTransferMLBERTConfig.NUM_LABELS)
-
-    def forward(self, input_ids, attention_mask, labels = None):
-        outputs = self.doubleBert(
-            input_ids=input_ids,
-            attention_mask=attention_mask
+        super().__init__(
+            model_config=SingleTransferMLBERTConfig
         )
-        cls_output = outputs.last_hidden_state[:, 0, :]
-        cls_output = self.dropout(cls_output)
-        logits = self.classifier(cls_output)
 
-        if labels is not None:
-            loss_fn = nn.CrossEntropyLoss()
-            loss = loss_fn(logits, labels)
-            return loss, logits
-        
-        return logits
+class DoubleTransferMLBERT(BaseModel):
+    def __init__(self):
+        super().__init__(
+            model_config=DoubleTransferMLBERTConfig
+        )
