@@ -92,9 +92,31 @@ class DoubleTransferMLBERTConfig:
 
 class DistilBERTConfig:
     MODEL_NAME = "distilbert/distilbert-base-uncased"
+    NUM_LABELS = 6
+    DROPOUT = 0.1
+    MAX_LENGTH = 512
+
+    EPOCHS = 10
+    BATCH_SIZE = 64
+
+    LEARNING_RATE = 2e-5
+    WEIGHT_DECAY = 0.01
+
+    PATIENCE = 3    
 
 class LargeBERTConfig:
     MODEL_NAME = "google-bert/bert-large-uncased"
+    NUM_LABELS = 6
+    DROPOUT = 0.1
+    MAX_LENGTH = 512
+
+    EPOCHS = 10
+    BATCH_SIZE = 64
+
+    LEARNING_RATE = 2e-5
+    WEIGHT_DECAY = 0.01
+
+    PATIENCE = 3
 
 class PredictionConfig:
     MAX_LENGTH = 512
