@@ -5,7 +5,9 @@ from config import (
     SingleTransferRoBERTaConfig,
     SingleTransferBERTConfig,
     SingleTransferMLBERTConfig,
-    DoubleTransferMLBERTConfig
+    DoubleTransferMLBERTConfig,
+    DistilBERTConfig,
+    LargeBERTConfig,
 )
 
 class BaseModel(nn.Module):
@@ -31,24 +33,24 @@ class BaseModel(nn.Module):
 
 class SingleTransferRoBERTa(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=SingleTransferRoBERTaConfig
-        )
+        super().__init__(model_config=SingleTransferRoBERTaConfig)
 
 class SingleTransferBERT(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=SingleTransferBERTConfig
-        )
+        super().__init__(model_config=SingleTransferBERTConfig)
 
 class SingleTransferMLBERT(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=SingleTransferMLBERTConfig
-        )
+        super().__init__(model_config=SingleTransferMLBERTConfig)
 
 class DoubleTransferMLBERT(BaseModel):
     def __init__(self):
-        super().__init__(
-            model_config=DoubleTransferMLBERTConfig
-        )
+        super().__init__(model_config=DoubleTransferMLBERTConfig)
+
+class DistilBERT(BaseModel):
+    def __init__(self):
+        super().__init__(model_config=DistilBERTConfig)
+
+class LargeBERT(BaseModel):
+    def __init__(self):
+        super().__init__(model_config=LargeBERTConfig)
