@@ -1,5 +1,4 @@
 import os
-import re
 import torch
 from torch.utils.data import DataLoader
 import pandas as pd
@@ -9,6 +8,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 from config import (
     Paths,
+    LabelMap,
     SingleTransferRoBERTaConfig,
     SingleTransferBERTConfig,
     SingleTransferMLBERTConfig,
@@ -23,29 +23,8 @@ from models import (
     DoubleTransferMLBERT
 )
 
-def load_model_and_tokenizer(model_name, model_path, device):
-    models = {
-        r"(single_transfer_RoBERTa)_(\d+p)": (SingleTransferRoBERTa, SingleTransferRoBERTaConfig),
-        r"(single_transfer_BERT)_(\d+p)": (SingleTransferBERT, SingleTransferBERTConfig),
-        r"(single_transfer_MLBERT)_(\d+p)": (SingleTransferMLBERT, SingleTransferMLBERTConfig),
-        r"(double_transfer_MLBERT)_(\d+p)": (DoubleTransferMLBERT, DoubleTransferMLBERTConfig)
-    }
-
-    for pattern, (model, model_config) in models.items():
-        if re.fullmatch(pattern, model_name):
-            model = model()
-            tokenizer = AutoTokenizer.from_pretrained(model_config.MODEL_NAME)
-            break
-    else:
-        raise ValueError(f"Unknown model file: {model_name}")
-    
-    checkpoint = torch.load(model_path, map_location=device)
-    model.load_state_dict(checkpoint["model_state_dict"])
-    print(f"Loaded model: {model_name}")
-    return model, tokenizer
-
 def predict(model, tokenizer, device):
-    texts, labels = load_and_preprocess_data(Paths.TEST_DATA, PredictionConfig.EMOTIONS)
+    texts, labels = load_and_preprocess_data(Paths.TEST_DATA, LabelMap.EMOTIONS)
     eval_dataset = EmotionDataset(texts, labels, tokenizer, PredictionConfig.MAX_LENGTH)
     eval_loader = DataLoader(eval_dataset, batch_size=PredictionConfig.BATCH_SIZE)
 
@@ -58,27 +37,39 @@ def predict(model, tokenizer, device):
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             probs = torch.softmax(outputs, dim=1)
             preds = torch.argmax(probs, dim=1)
-            predicted_emotions = [list(PredictionConfig.EMOTIONS.keys())[list(PredictionConfig.EMOTIONS.values()).index(pred.item())] for pred in preds]
+            predicted_emotions = [list(LabelMap.EMOTIONS.keys())[list(LabelMap.EMOTIONS.values()).index(pred.item())] for pred in preds]
             predictions.extend(predicted_emotions)
     return predictions
 
-def evaluation(device):
-    for model_name, model_path in PredictionConfig.MODEL_PATHS.items():
-        result_file_path = f"predictions/{model_name}_prediction.csv"
+def evaluation(models, device):
+    os.makedirs("predictions", exist_ok=True)
 
-        if os.path.exists(result_file_path):
-            print(f"{result_file_path} already exists")
-        else:
-            model, tokenizer = load_model_and_tokenizer(model_name, model_path, device)
-            model.to(device)
-            model.eval()
+    for model, model_config in models.items():
+        for train_data_idx in range(3):
+            model_name = model.__name__
+            data_size = ["100p", "10p", "1p"][train_data_idx]
+            eval_model_path = f"models/{model_name}_{data_size}.pt"
+            result_file_path = f"predictions/{model_name}_{data_size}_prediction.csv"
+            
+            if os.path.exists(result_file_path):
+                print(f"{result_file_path} already exists")
+            else:
+                model = model()
+                tokenizer = AutoTokenizer.from_pretrained(model_config.MODEL_NAME)
 
-            predictions = predict(model, tokenizer, device)
+                checkpoint = torch.load(eval_model_path, map_location=device)
+                model.load_state_dict(checkpoint["model_state_dict"])
+                print(f"Loaded model: {model_name}")
 
-            test_data = pd.read_csv(Paths.TEST_DATA)
-            test_data["Prediction"] = predictions
-            test_data.to_csv(result_file_path, index=False)
-            print(f"Predictions saved to {result_file_path}")
+                model.to(device)
+                model.eval()
+
+                predictions = predict(model, tokenizer, device)
+
+                test_data = pd.read_csv(Paths.TEST_DATA)
+                test_data["Prediction"] = predictions
+                test_data.to_csv(result_file_path, index=False)
+                print(f"Predictions saved to {result_file_path}")
 
 def calculate_scores(folder_path):
     file_names = [f for f in os.listdir(folder_path) if f.endswith(".csv")]
@@ -109,7 +100,14 @@ def main():
         device = torch.device("cpu")
     print("device:", device)
 
-    evaluation(device)
+    models = {
+        SingleTransferRoBERTa: SingleTransferRoBERTaConfig,
+        SingleTransferBERT: SingleTransferBERTConfig,
+        SingleTransferMLBERT: SingleTransferMLBERTConfig,
+        DoubleTransferMLBERT: DoubleTransferMLBERTConfig
+    }
+
+    evaluation(models, device)
     calculate_scores("predictions")
 
 if __name__ == "__main__":
