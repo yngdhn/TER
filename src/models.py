@@ -17,7 +17,7 @@ class BaseModel(nn.Module):
         self.dropout = nn.Dropout(model_config.DROPOUT)
         self.classifier = nn.Linear(self.model.config.hidden_size, model_config.NUM_LABELS)
     
-    def forward(self, input_ids, attention_mask, labels=None):
+    def forward(self, input_ids, attention_mask):
         outputs = self.model(
             input_ids=input_ids,
             attention_mask=attention_mask
@@ -26,11 +26,6 @@ class BaseModel(nn.Module):
         cls_output = self.dropout(cls_output)
         logits = self.classifier(cls_output)
 
-        if labels is not None:
-            loss_fn = nn.CrossEntropyLoss()
-            loss = loss_fn(logits, labels)
-            return loss, logits
-        
         return logits
 
 class SingleTransferRoBERTa(BaseModel):
