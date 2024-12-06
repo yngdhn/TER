@@ -13,14 +13,18 @@ from config import (
     SingleTransferBERTConfig,
     SingleTransferMLBERTConfig,
     DoubleTransferMLBERTConfig,
-    PredictionConfig
+    DistilBERTConfig,
+    LargeBERTConfig,
+    PredictionConfig,
 )
 from utils import EmotionDataset, load_and_preprocess_data
 from models import (
     SingleTransferRoBERTa,
     SingleTransferBERT,
     SingleTransferMLBERT,
-    DoubleTransferMLBERT
+    DoubleTransferMLBERT,
+    DistilBERT,
+    LargeBERT,
 )
 
 def predict(model, tokenizer, device):
@@ -104,7 +108,9 @@ def main():
         SingleTransferRoBERTa: SingleTransferRoBERTaConfig,
         SingleTransferBERT: SingleTransferBERTConfig,
         SingleTransferMLBERT: SingleTransferMLBERTConfig,
-        DoubleTransferMLBERT: DoubleTransferMLBERTConfig
+        DoubleTransferMLBERT: DoubleTransferMLBERTConfig,
+        DistilBERT: DistilBERTConfig,
+        LargeBERT: LargeBERTConfig,
     }
 
     evaluation(models, device)
