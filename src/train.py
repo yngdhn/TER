@@ -127,21 +127,25 @@ def main():
         device = torch.device("cpu")
     print("device:", device)
 
-    model_list = [SingleTransferRoBERTa, SingleTransferBERT, SingleTransferMLBERT, DoubleTransferMLBERT]
-    model_config_list = [SingleTransferRoBERTaConfig, SingleTransferBERTConfig, SingleTransferMLBERTConfig, DoubleTransferMLBERTConfig]
+    models = {
+        SingleTransferRoBERTa: SingleTransferRoBERTaConfig,
+        SingleTransferBERT: SingleTransferBERTConfig,
+        SingleTransferMLBERT: SingleTransferMLBERTConfig,
+        DoubleTransferMLBERT: DoubleTransferMLBERTConfig
+    }
     train_data_list = [Paths.TRAIN_DATA_100p, Paths.TRAIN_DATA_10p, Paths.TRAIN_DATA_1p]
 
-    for model_idx in range(len(model_list)):
-        for train_data_idx in range(len(train_data_list)):
-            model_name = model_list[model_idx].__name__
+    for model, model_config in models.items():
+        for train_data_idx, train_data in enumerate(train_data_list):
+            model_name = model.__name__
             data_size = ["100p", "10p", "1p"][train_data_idx]
             description = f"{model_name} - {data_size}"
             model_path = f"models/{model_name}_{data_size}.pt"
 
             train_model(
-                model=model_list[model_idx](),
-                model_config=model_config_list[model_idx],
-                train_data=train_data_list[train_data_idx],
+                model=model(),
+                model_config=model_config,
+                train_data=train_data,
                 model_path=model_path,
                 description=description,
                 device=device
