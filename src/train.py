@@ -6,6 +6,7 @@ from transformers import AutoTokenizer
 
 from config import (
     Paths,
+    LabelMap,
     SingleTransferRoBERTaConfig,
     SingleTransferBERTConfig,
     SingleTransferMLBERTConfig,
@@ -19,7 +20,8 @@ from models import (
     DoubleTransferMLBERT
 )
 
-def train(model, texts, labels, model_config, model_path, device):
+def train(model, model_config, train_data, model_path, device):
+    texts, labels = load_and_preprocess_data(train_data, LabelMap.EMOTIONS)
     train_texts, val_texts, train_labels, val_labels = split_data(texts=texts, labels=labels)
 
     tokenizer = AutoTokenizer.from_pretrained(model_config.MODEL_NAME)
@@ -111,129 +113,10 @@ def train(model, texts, labels, model_config, model_path, device):
 
     return model
 
-# single transfer RoBERTa
-def train_single_transfer_RoBERTa_100p(device):
-    model = SingleTransferRoBERTa()
-    model_config = SingleTransferRoBERTaConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_100p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_ROBERTA_100p
-
-    print("=== train single transfer RoBERTa - 100p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer RoBERTa - 100p training completed ===")
-
-def train_single_transfer_RoBERTa_10p(device):
-    model = SingleTransferRoBERTa()
-    model_config = SingleTransferRoBERTaConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_10p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_ROBERTA_10p
-
-    print("=== train single transfer RoBERTa - 10p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer RoBERTa - 10p training completed ===")
-
-def train_single_transfer_RoBERTa_1p(device):
-    model = SingleTransferRoBERTa()
-    model_config = SingleTransferRoBERTaConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_1p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_ROBERTA_1p
-
-    print("=== train single transfer RoBERTa - 1p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer RoBERTa - 1p training completed ===")
-
-# single transfer BERT
-def train_single_transfer_BERT_100p(device):
-    model = SingleTransferBERT()
-    model_config = SingleTransferBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_100p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_BERT_100p
-
-    print("=== train single transfer BERT - 100p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer BERT - 100p training completed ===")
-
-def train_single_transfer_BERT_10p(device):
-    model = SingleTransferBERT()
-    model_config = SingleTransferBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_10p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_BERT_10p
-
-    print("=== train single transfer BERT - 10p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer BERT - 10p training completed ===")
-
-def train_single_transfer_BERT_1p(device):
-    model = SingleTransferBERT()
-    model_config = SingleTransferBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_1p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_BERT_1p
-
-    print("=== train single transfer BERT - 1p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer BERT - 1p training completed ===")
-
-# single transfer MLBERT
-def train_single_transfer_MLBERT_100p(device):
-    model = SingleTransferMLBERT()
-    model_config = SingleTransferMLBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_100p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_MLBERT_100p
-
-    print("=== train single transfer MLBERT - 100p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer MLBERT - 100p training completed ===")
-
-def train_single_transfer_MLBERT_10p(device):
-    model = SingleTransferMLBERT()
-    model_config = SingleTransferMLBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_10p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_MLBERT_10p
-
-    print("=== train single transfer MLBERT - 10p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer MLBERT - 10p training completed ===")
-
-def train_single_transfer_MLBERT_1p(device):
-    model = SingleTransferMLBERT()
-    model_config = SingleTransferMLBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_1p, model_config.EMOTIONS)
-    model_path = Paths.SINGLE_MLBERT_1p
-
-    print("=== train single transfer MLBERT - 1p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== single transfer MLBERT - 1p training completed ===")
-
-# double transfer MLBERT
-def train_double_transfer_MLBERT_100p(device):
-    model = DoubleTransferMLBERT()
-    model_config = DoubleTransferMLBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_100p, model_config.EMOTIONS)
-    model_path = Paths.DOUBLE_MLBERT_100p
-
-    print("=== train double transfer MLBERT - 100p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== double transfer MLBERT - 100p training completed ===")
-
-def train_double_transfer_MLBERT_10p(device):
-    model = DoubleTransferMLBERT()
-    model_config = DoubleTransferMLBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_10p, model_config.EMOTIONS)
-    model_path = Paths.DOUBLE_MLBERT_10p
-
-    print("=== train double transfer MLBERT - 10p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== double transfer MLBERT - 10p training completed ===")
-
-def train_double_transfer_MLBERT_1p(device):
-    model = DoubleTransferMLBERT()
-    model_config = DoubleTransferMLBERTConfig()
-    texts, labels = load_and_preprocess_data(Paths.TRAIN_DATA_1p, model_config.EMOTIONS)
-    model_path = Paths.DOUBLE_MLBERT_1p
-
-    print("=== train double transfer MLBERT - 1p ===")
-    train(model, texts, labels, model_config, model_path, device)
-    print("=== double transfer MLBERT - 1p training completed ===")
+def train_model(model, model_config, train_data, model_path, description: str, device):
+    print(f"=== train{description} ===")
+    train(model, model_config, train_data, model_path, device)
+    print(f"=== {description} training completed ===")
 
 def main():
     if torch.cuda.is_available():
@@ -244,25 +127,25 @@ def main():
         device = torch.device("cpu")
     print("device:", device)
 
-    # single transfer RoBERTa
-    train_single_transfer_RoBERTa_100p(device)
-    train_single_transfer_RoBERTa_10p(device)
-    train_single_transfer_RoBERTa_1p(device)
+    model_list = [SingleTransferRoBERTa, SingleTransferBERT, SingleTransferMLBERT, DoubleTransferMLBERT]
+    model_config_list = [SingleTransferRoBERTaConfig, SingleTransferBERTConfig, SingleTransferMLBERTConfig, DoubleTransferMLBERTConfig]
+    train_data_list = [Paths.TRAIN_DATA_100p, Paths.TRAIN_DATA_10p, Paths.TRAIN_DATA_1p]
 
-    # single transfer BERT
-    train_single_transfer_BERT_100p(device)
-    train_single_transfer_BERT_10p(device)
-    train_single_transfer_BERT_1p(device)
+    for model_idx in range(len(model_list)):
+        for train_data_idx in range(len(train_data_list)):
+            model_name = model_list[model_idx].__name__
+            data_size = ["100p", "10p", "1p"][train_data_idx]
+            description = f"{model_name} - {data_size}"
+            model_path = f"models/{model_name}_{data_size}.pt"
 
-    # single transfer MLBERT
-    train_single_transfer_MLBERT_100p(device)
-    train_single_transfer_MLBERT_10p(device)
-    train_single_transfer_MLBERT_1p(device)
-
-    # double transfer MLBERT
-    train_double_transfer_MLBERT_100p(device)
-    train_double_transfer_MLBERT_10p(device)
-    train_double_transfer_MLBERT_1p(device)
+            train_model(
+                model=model_list[model_idx](),
+                model_config=model_config_list[model_idx],
+                train_data=train_data_list[train_data_idx],
+                model_path=model_path,
+                description=description,
+                device=device
+            )
 
 if __name__ == "__main__":
     main()
