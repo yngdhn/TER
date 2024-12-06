@@ -30,6 +30,8 @@ class BaseModel(nn.Module):
             loss_fn = nn.CrossEntropyLoss()
             loss = loss_fn(logits, labels)
             return loss, logits
+        
+        return logits
 
 class SingleTransferRoBERTa(BaseModel):
     def __init__(self):
