@@ -111,7 +111,7 @@ class LargeBERTConfig:
     MAX_LENGTH = 512
 
     EPOCHS = 10
-    BATCH_SIZE = 64
+    BATCH_SIZE = 32
 
     LEARNING_RATE = 2e-5
     WEIGHT_DECAY = 0.01
