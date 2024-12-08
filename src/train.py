@@ -141,15 +141,15 @@ def main():
     }
     train_data_list = [Paths.TRAIN_DATA_100p, Paths.TRAIN_DATA_10p, Paths.TRAIN_DATA_1p]
 
-    for model, model_config in models.items():
+    for model_class, model_config in models.items():
         for train_data_idx, train_data in enumerate(train_data_list):
-            model_name = model.__name__
+            model_name = model_class.__name__
             data_size = ["100p", "10p", "1p"][train_data_idx]
             description = f"{model_name} - {data_size}"
             model_path = f"models/{model_name}_{data_size}.pt"
 
             train_model(
-                model=model(),
+                model=model_class(),
                 model_config=model_config,
                 train_data=train_data,
                 model_path=model_path,
