@@ -105,6 +105,33 @@ Validation: 100% 1/1 [00:00<00:00,  9.01it/s]
 Epoch 8/10, Train Loss: 1.5907, Validation Loss: 1.8340, Accuracy: 33.33%
 Early stopping triggered after epoch 8
 === SingleTransferRoBERTa - 1p training completed ===
+
+=== train SingleTransferRoBERTa - 1p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 3/3 [00:06<00:00,  2.23s/it]
+Validation: 100% 1/1 [00:00<00:00,  4.19it/s]
+Epoch 1/10, Train Loss: 1.8158, Validation Loss: 1.8310, Accuracy: 11.11%
+Training Epoch 2/10: 100% 3/3 [00:05<00:00,  1.85s/it]
+Validation: 100% 1/1 [00:00<00:00,  4.73it/s]
+Epoch 2/10, Train Loss: 1.8250, Validation Loss: 1.8090, Accuracy: 16.67%
+Training Epoch 3/10: 100% 3/3 [00:05<00:00,  1.85s/it]
+Validation: 100% 1/1 [00:00<00:00,  4.76it/s]
+Epoch 3/10, Train Loss: 1.8009, Validation Loss: 1.7931, Accuracy: 11.11%
+Training Epoch 4/10: 100% 3/3 [00:05<00:00,  1.86s/it]
+Validation: 100% 1/1 [00:00<00:00,  4.72it/s]
+Epoch 4/10, Train Loss: 1.7736, Validation Loss: 1.7893, Accuracy: 22.22%
+Training Epoch 5/10: 100% 3/3 [00:05<00:00,  1.86s/it]
+Validation: 100% 1/1 [00:00<00:00,  4.72it/s]
+Epoch 5/10, Train Loss: 1.7561, Validation Loss: 1.7948, Accuracy: 11.11%
+Training Epoch 6/10: 100% 3/3 [00:05<00:00,  1.87s/it]
+Validation: 100% 1/1 [00:00<00:00,  4.70it/s]
+Epoch 6/10, Train Loss: 1.7487, Validation Loss: 1.7959, Accuracy: 11.11%
+Training Epoch 7/10: 100% 3/3 [00:05<00:00,  1.87s/it]
+Validation: 100% 1/1 [00:00<00:00,  4.62it/s]
+Epoch 7/10, Train Loss: 1.6859, Validation Loss: 1.8045, Accuracy: 5.56%
+Early stopping triggered after epoch 7
+=== SingleTransferRoBERTa - 1p training completed ===
 ```
 
 ## SingleTransferBERT
@@ -537,11 +564,11 @@ Epoch 10/10, Train Loss: 1.0845, Validation Loss: 1.6875, Accuracy: 38.89%
 === DistilBERT - 1p training completed ===
 ```
 
-## LargeBERT
+## BERTlarge
 
 ### 100p
 ```
-=== train LargeBERT - 100p ===
+=== train BERTlarge - 100p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 507/507 [15:59<00:00,  1.89s/it]
@@ -560,12 +587,12 @@ Training Epoch 5/10: 100% 507/507 [15:57<00:00,  1.89s/it]
 Validation: 100% 57/57 [00:34<00:00,  1.65it/s]
 Epoch 5/10, Train Loss: 0.0569, Validation Loss: 0.1279, Accuracy: 96.94%
 Early stopping triggered after epoch 5
-=== LargeBERT - 100p training completed ===
+=== BERTlarge - 100p training completed ===
 ```
 
 ### 10p
 ```
-=== train LargeBERT - 10p ===
+=== train BERTlarge - 10p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 51/51 [01:35<00:00,  1.88s/it]
@@ -590,12 +617,12 @@ Training Epoch 7/10: 100% 51/51 [01:35<00:00,  1.88s/it]
 Validation: 100% 6/6 [00:03<00:00,  1.74it/s]
 Epoch 7/10, Train Loss: 0.0211, Validation Loss: 0.4906, Accuracy: 88.33%
 Early stopping triggered after epoch 7
-=== LargeBERT - 10p training completed ===
+=== BERTlarge - 10p training completed ===
 ```
 
 ### 1p
 ```
-=== train LargeBERT - 1p ===
+=== train BERTlarge - 1p ===
   checkpoint = torch.load(model_path)
 No checkpoint found. Starting training from scratch...
 Training Epoch 1/10: 100% 6/6 [00:09<00:00,  1.60s/it]
@@ -614,5 +641,5 @@ Training Epoch 5/10: 100% 6/6 [00:09<00:00,  1.61s/it]
 Validation: 100% 1/1 [00:00<00:00,  2.82it/s]
 Epoch 5/10, Train Loss: 1.1159, Validation Loss: 1.7812, Accuracy: 16.67%
 Early stopping triggered after epoch 5
-=== LargeBERT - 1p training completed ===
+=== BERTlarge - 1p training completed ===
 ```
