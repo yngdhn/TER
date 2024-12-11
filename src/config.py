@@ -3,6 +3,7 @@
 class Paths:
     TRAIN_DATA_100p = "dataset/train_data_100p.csv"
     TRAIN_DATA_10p = "dataset/train_data_10p.csv"
+    TRAIN_DATA_5p = "dataset/train_data_5p.csv"
     TRAIN_DATA_1p = "dataset/train_data_1p.csv"
     
     TEST_DATA = "dataset/test_data.csv"
@@ -78,7 +79,7 @@ class BERTsmallConfig:
     LEARNING_RATE = 2e-5
     WEIGHT_DECAY = 0.01
 
-    PATIENCE = 3    
+    PATIENCE = 3
 
 class BERTlargeConfig:
     MODEL_NAME = "google-bert/bert-large-uncased"
