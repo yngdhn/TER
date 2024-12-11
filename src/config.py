@@ -90,8 +90,8 @@ class DoubleTransferMLBERTConfig:
 
     PATIENCE = 3
 
-class DistilBERTConfig:
-    MODEL_NAME = "distilbert/distilbert-base-uncased"
+class BERTsmallConfig:
+    MODEL_NAME = "prajjwal1/bert-small"
     NUM_LABELS = 6
     DROPOUT = 0.1
     MAX_LENGTH = 512
@@ -104,7 +104,7 @@ class DistilBERTConfig:
 
     PATIENCE = 3    
 
-class LargeBERTConfig:
+class BERTlargeConfig:
     MODEL_NAME = "google-bert/bert-large-uncased"
     NUM_LABELS = 6
     DROPOUT = 0.1

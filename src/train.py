@@ -11,8 +11,8 @@ from config import (
     SingleTransferBERTConfig,
     SingleTransferMLBERTConfig,
     DoubleTransferMLBERTConfig,
-    DistilBERTConfig,
-    LargeBERTConfig,
+    BERTsmallConfig,
+    BERTlargeConfig,
 )
 from utils import EmotionDataset, load_and_preprocess_data, split_data
 from models import (
@@ -20,8 +20,8 @@ from models import (
     SingleTransferBERT,
     SingleTransferMLBERT,
     DoubleTransferMLBERT,
-    DistilBERT,
-    LargeBERT,
+    BERTsmall,
+    BERTlarge,
 )
 
 def train(model, model_config, train_data, model_path, device):
@@ -136,8 +136,8 @@ def main():
         SingleTransferBERT: SingleTransferBERTConfig,
         SingleTransferMLBERT: SingleTransferMLBERTConfig,
         DoubleTransferMLBERT: DoubleTransferMLBERTConfig,
-        DistilBERT: DistilBERTConfig,
-        LargeBERT: LargeBERTConfig,
+        BERTsmall: BERTsmallConfig,
+        BERTlarge: BERTlargeConfig,
     }
     train_data_list = [Paths.TRAIN_DATA_100p, Paths.TRAIN_DATA_10p, Paths.TRAIN_DATA_1p]
 
