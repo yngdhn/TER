@@ -6,8 +6,8 @@ from config import (
     SingleTransferBERTConfig,
     SingleTransferMLBERTConfig,
     DoubleTransferMLBERTConfig,
-    DistilBERTConfig,
-    LargeBERTConfig,
+    BERTsmallConfig,
+    BERTlargeConfig,
 )
 
 class BaseModel(nn.Module):
@@ -44,10 +44,10 @@ class DoubleTransferMLBERT(BaseModel):
     def __init__(self):
         super().__init__(model_config=DoubleTransferMLBERTConfig)
 
-class DistilBERT(BaseModel):
+class BERTsmall(BaseModel):
     def __init__(self):
-        super().__init__(model_config=DistilBERTConfig)
+        super().__init__(model_config=BERTsmallConfig)
 
-class LargeBERT(BaseModel):
+class BERTlarge(BaseModel):
     def __init__(self):
-        super().__init__(model_config=LargeBERTConfig)
+        super().__init__(model_config=BERTlargeConfig)
