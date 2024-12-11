@@ -162,5 +162,6 @@ cython_debug/
 #.idea/
 
 # demo files
-preprocess.py
+original_dataset.csv
+test.py
 .DS_Store
