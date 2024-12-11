@@ -822,3 +822,131 @@ Epoch 5/10, Train Loss: 1.1159, Validation Loss: 1.7812, Accuracy: 16.67%
 Early stopping triggered after epoch 5
 === BERTlarge - 1p training completed ===
 ```
+
+## 5p data Training Result
+
+# BERTsmall
+```
+=== train BERTsmall - 5p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 13/13 [00:02<00:00,  4.54it/s]
+Validation: 100% 2/2 [00:00<00:00, 13.43it/s]
+Epoch 1/10, Train Loss: 1.8198, Validation Loss: 1.7538, Accuracy: 17.78%
+Training Epoch 2/10: 100% 13/13 [00:02<00:00,  4.58it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.87it/s]
+Epoch 2/10, Train Loss: 1.7262, Validation Loss: 1.7200, Accuracy: 25.56%
+Training Epoch 3/10: 100% 13/13 [00:02<00:00,  4.54it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.84it/s]
+Epoch 3/10, Train Loss: 1.6086, Validation Loss: 1.6283, Accuracy: 31.11%
+Training Epoch 4/10: 100% 13/13 [00:02<00:00,  4.57it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.81it/s]
+Epoch 4/10, Train Loss: 1.4962, Validation Loss: 1.6236, Accuracy: 38.89%
+Training Epoch 5/10: 100% 13/13 [00:02<00:00,  4.58it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.58it/s]
+Epoch 5/10, Train Loss: 1.3246, Validation Loss: 1.3890, Accuracy: 47.78%
+Training Epoch 6/10: 100% 13/13 [00:02<00:00,  4.53it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.83it/s]
+Epoch 6/10, Train Loss: 1.1356, Validation Loss: 1.2604, Accuracy: 53.33%
+Training Epoch 7/10: 100% 13/13 [00:02<00:00,  4.57it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.84it/s]
+Epoch 7/10, Train Loss: 0.9346, Validation Loss: 1.1801, Accuracy: 55.56%
+Training Epoch 8/10: 100% 13/13 [00:02<00:00,  4.59it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.89it/s]
+Epoch 8/10, Train Loss: 0.7661, Validation Loss: 1.0059, Accuracy: 63.33%
+Training Epoch 9/10: 100% 13/13 [00:02<00:00,  4.50it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.63it/s]
+Epoch 9/10, Train Loss: 0.6179, Validation Loss: 0.9159, Accuracy: 62.22%
+Training Epoch 10/10: 100% 13/13 [00:02<00:00,  4.58it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.84it/s]
+Epoch 10/10, Train Loss: 0.5062, Validation Loss: 0.8759, Accuracy: 64.44%
+=== BERTsmall - 5p training completed ===
+```
+```
+=== train BERTsmall - 5p ===
+  checkpoint = torch.load(model_path)
+Resuming training from epoch 10...
+Training Epoch 11/30: 100% 13/13 [00:03<00:00,  3.59it/s]
+Validation: 100% 2/2 [00:00<00:00, 13.67it/s]
+Epoch 11/30, Train Loss: 0.4003, Validation Loss: 0.8605, Accuracy: 67.78%
+Training Epoch 12/30: 100% 13/13 [00:02<00:00,  4.58it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.72it/s]
+Epoch 12/30, Train Loss: 0.3181, Validation Loss: 0.7480, Accuracy: 68.89%
+Training Epoch 13/30: 100% 13/13 [00:02<00:00,  4.59it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.89it/s]
+Epoch 13/30, Train Loss: 0.2594, Validation Loss: 0.8026, Accuracy: 67.78%
+Training Epoch 14/30: 100% 13/13 [00:02<00:00,  4.59it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.84it/s]
+Epoch 14/30, Train Loss: 0.2065, Validation Loss: 0.7871, Accuracy: 72.22%
+Training Epoch 15/30: 100% 13/13 [00:02<00:00,  4.52it/s]
+Validation: 100% 2/2 [00:00<00:00, 14.81it/s]
+Epoch 15/30, Train Loss: 0.1658, Validation Loss: 0.7655, Accuracy: 70.00%
+Early stopping triggered after epoch 15
+=== BERTsmall - 5p training completed ===
+```
+
+# SingleTransferBERT
+```
+=== train SingleTransferBERT - 5p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 13/13 [00:16<00:00,  1.25s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.38it/s]
+Epoch 1/10, Train Loss: 1.7957, Validation Loss: 1.7760, Accuracy: 27.78%
+Training Epoch 2/10: 100% 13/13 [00:14<00:00,  1.14s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.57it/s]
+Epoch 2/10, Train Loss: 1.7109, Validation Loss: 1.6723, Accuracy: 33.33%
+Training Epoch 3/10: 100% 13/13 [00:14<00:00,  1.14s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.61it/s]
+Epoch 3/10, Train Loss: 1.4605, Validation Loss: 1.3727, Accuracy: 48.89%
+Training Epoch 4/10: 100% 13/13 [00:14<00:00,  1.14s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.62it/s]
+Epoch 4/10, Train Loss: 1.0641, Validation Loss: 1.1105, Accuracy: 53.33%
+Training Epoch 5/10: 100% 13/13 [00:14<00:00,  1.14s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.62it/s]
+Epoch 5/10, Train Loss: 0.6610, Validation Loss: 0.8883, Accuracy: 67.78%
+Training Epoch 6/10: 100% 13/13 [00:14<00:00,  1.14s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.54it/s]
+Epoch 6/10, Train Loss: 0.3656, Validation Loss: 0.7179, Accuracy: 73.33%
+Training Epoch 7/10: 100% 13/13 [00:14<00:00,  1.14s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.60it/s]
+Epoch 7/10, Train Loss: 0.1954, Validation Loss: 0.7405, Accuracy: 75.56%
+Training Epoch 8/10: 100% 13/13 [00:14<00:00,  1.14s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.62it/s]
+Epoch 8/10, Train Loss: 0.1045, Validation Loss: 0.7554, Accuracy: 72.22%
+Training Epoch 9/10: 100% 13/13 [00:14<00:00,  1.13s/it]
+Validation: 100% 2/2 [00:00<00:00,  3.62it/s]
+Epoch 9/10, Train Loss: 0.0537, Validation Loss: 0.7438, Accuracy: 76.67%
+Early stopping triggered after epoch 9
+=== SingleTransferBERT - 5p training completed ===
+```
+
+# BERTlarge
+```
+=== train BERTlarge - 5p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 26/26 [00:48<00:00,  1.85s/it]
+Validation: 100% 3/3 [00:01<00:00,  1.72it/s]
+Epoch 1/10, Train Loss: 1.8044, Validation Loss: 1.7820, Accuracy: 22.22%
+Training Epoch 2/10: 100% 26/26 [00:48<00:00,  1.85s/it]
+Validation: 100% 3/3 [00:01<00:00,  1.72it/s]
+Epoch 2/10, Train Loss: 1.6196, Validation Loss: 1.5721, Accuracy: 38.89%
+Training Epoch 3/10: 100% 26/26 [00:48<00:00,  1.85s/it]
+Validation: 100% 3/3 [00:01<00:00,  1.72it/s]
+Epoch 3/10, Train Loss: 1.1895, Validation Loss: 1.2017, Accuracy: 58.89%
+Training Epoch 4/10: 100% 26/26 [00:48<00:00,  1.85s/it]
+Validation: 100% 3/3 [00:01<00:00,  1.72it/s]
+Epoch 4/10, Train Loss: 0.6059, Validation Loss: 0.8998, Accuracy: 68.89%
+Training Epoch 5/10: 100% 26/26 [00:48<00:00,  1.85s/it]
+Validation: 100% 3/3 [00:01<00:00,  1.72it/s]
+Epoch 5/10, Train Loss: 0.2631, Validation Loss: 0.9228, Accuracy: 70.00%
+Training Epoch 6/10: 100% 26/26 [00:47<00:00,  1.84s/it]
+Validation: 100% 3/3 [00:01<00:00,  1.72it/s]
+Epoch 6/10, Train Loss: 0.0957, Validation Loss: 0.9329, Accuracy: 72.22%
+Training Epoch 7/10: 100% 26/26 [00:47<00:00,  1.84s/it]
+Validation: 100% 3/3 [00:01<00:00,  1.72it/s]
+Epoch 7/10, Train Loss: 0.0476, Validation Loss: 1.0017, Accuracy: 72.22%
+Early stopping triggered after epoch 7
+=== BERTlarge - 5p training completed ===
+```
