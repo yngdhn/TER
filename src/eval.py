@@ -48,9 +48,9 @@ def predict(model, tokenizer, device):
 def evaluation(models, device):
     os.makedirs("predictions", exist_ok=True)
 
-    for model, model_config in models.items():
+    for model_class, model_config in models.items():
         for train_data_idx in range(3):
-            model_name = model.__name__
+            model_name = model_class.__name__
             data_size = ["100p", "10p", "1p"][train_data_idx]
             eval_model_path = f"models/{model_name}_{data_size}.pt"
             result_file_path = f"predictions/{model_name}_{data_size}_prediction.csv"
@@ -58,7 +58,7 @@ def evaluation(models, device):
             if os.path.exists(result_file_path):
                 print(f"{result_file_path} already exists")
             else:
-                model = model()
+                model = model_class()
                 tokenizer = AutoTokenizer.from_pretrained(model_config.MODEL_NAME)
 
                 checkpoint = torch.load(eval_model_path, map_location=device)

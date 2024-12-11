@@ -429,26 +429,190 @@ Epoch 10/10, Train Loss: 0.6162, Validation Loss: 1.6773, Accuracy: 33.33%
 
 ### 100p
 ```
+=== train DistilBERT - 100p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 254/254 [02:31<00:00,  1.68it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.00it/s]
+Epoch 1/10, Train Loss: 0.6266, Validation Loss: 0.1415, Accuracy: 95.39%
+Training Epoch 2/10: 100% 254/254 [02:29<00:00,  1.69it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.01it/s]
+Epoch 2/10, Train Loss: 0.1321, Validation Loss: 0.1189, Accuracy: 96.33%
+Training Epoch 3/10: 100% 254/254 [02:29<00:00,  1.69it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.02it/s]
+Epoch 3/10, Train Loss: 0.0885, Validation Loss: 0.1224, Accuracy: 96.89%
+Training Epoch 4/10: 100% 254/254 [02:29<00:00,  1.69it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.02it/s]
+Epoch 4/10, Train Loss: 0.0696, Validation Loss: 0.1079, Accuracy: 96.28%
+Training Epoch 5/10: 100% 254/254 [02:30<00:00,  1.69it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.02it/s]
+Epoch 5/10, Train Loss: 0.0549, Validation Loss: 0.1033, Accuracy: 96.94%
+Training Epoch 6/10: 100% 254/254 [02:29<00:00,  1.69it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.02it/s]
+Epoch 6/10, Train Loss: 0.0442, Validation Loss: 0.1078, Accuracy: 96.89%
+Training Epoch 7/10: 100% 254/254 [02:29<00:00,  1.69it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.01it/s]
+Epoch 7/10, Train Loss: 0.0400, Validation Loss: 0.1040, Accuracy: 96.94%
+Training Epoch 8/10: 100% 254/254 [02:29<00:00,  1.69it/s]
+Validation: 100% 29/29 [00:05<00:00,  5.01it/s]
+Epoch 8/10, Train Loss: 0.0307, Validation Loss: 0.1279, Accuracy: 96.44%
+Early stopping triggered after epoch 8
+=== DistilBERT - 100p training completed ===
 ```
 
 ### 10p
 ```
+=== train DistilBERT - 10p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 26/26 [00:15<00:00,  1.73it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.16it/s]
+Epoch 1/10, Train Loss: 1.7605, Validation Loss: 1.6702, Accuracy: 30.56%
+Training Epoch 2/10: 100% 26/26 [00:15<00:00,  1.73it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.16it/s]
+Epoch 2/10, Train Loss: 1.3050, Validation Loss: 1.0308, Accuracy: 66.11%
+Training Epoch 3/10: 100% 26/26 [00:15<00:00,  1.72it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.16it/s]
+Epoch 3/10, Train Loss: 0.6720, Validation Loss: 0.5239, Accuracy: 82.22%
+Training Epoch 4/10: 100% 26/26 [00:15<00:00,  1.72it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.15it/s]
+Epoch 4/10, Train Loss: 0.3387, Validation Loss: 0.4246, Accuracy: 85.56%
+Training Epoch 5/10: 100% 26/26 [00:15<00:00,  1.72it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.10it/s]
+Epoch 5/10, Train Loss: 0.1682, Validation Loss: 0.3350, Accuracy: 88.89%
+Training Epoch 6/10: 100% 26/26 [00:15<00:00,  1.72it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.11it/s]
+Epoch 6/10, Train Loss: 0.0997, Validation Loss: 0.3311, Accuracy: 91.67%
+Training Epoch 7/10: 100% 26/26 [00:15<00:00,  1.72it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.15it/s]
+Epoch 7/10, Train Loss: 0.0630, Validation Loss: 0.3148, Accuracy: 90.56%
+Training Epoch 8/10: 100% 26/26 [00:15<00:00,  1.72it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.13it/s]
+Epoch 8/10, Train Loss: 0.0432, Validation Loss: 0.3185, Accuracy: 91.11%
+Training Epoch 9/10: 100% 26/26 [00:15<00:00,  1.73it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.15it/s]
+Epoch 9/10, Train Loss: 0.0246, Validation Loss: 0.3465, Accuracy: 91.67%
+Training Epoch 10/10: 100% 26/26 [00:15<00:00,  1.73it/s]
+Validation: 100% 3/3 [00:00<00:00,  5.14it/s]
+Epoch 10/10, Train Loss: 0.0175, Validation Loss: 0.3263, Accuracy: 90.56%
+Early stopping triggered after epoch 10
+=== DistilBERT - 10p training completed ===
 ```
 
 ### 1p
 ```
+=== train DistilBERT - 1p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 3/3 [00:01<00:00,  1.98it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.84it/s]
+Epoch 1/10, Train Loss: 1.8172, Validation Loss: 1.7955, Accuracy: 22.22%
+Training Epoch 2/10: 100% 3/3 [00:01<00:00,  1.94it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.83it/s]
+Epoch 2/10, Train Loss: 1.7601, Validation Loss: 1.7917, Accuracy: 27.78%
+Training Epoch 3/10: 100% 3/3 [00:01<00:00,  1.94it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.74it/s]
+Epoch 3/10, Train Loss: 1.7244, Validation Loss: 1.7936, Accuracy: 33.33%
+Training Epoch 4/10: 100% 3/3 [00:01<00:00,  1.98it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.67it/s]
+Epoch 4/10, Train Loss: 1.6697, Validation Loss: 1.7877, Accuracy: 38.89%
+Training Epoch 5/10: 100% 3/3 [00:01<00:00,  1.93it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.83it/s]
+Epoch 5/10, Train Loss: 1.6270, Validation Loss: 1.7812, Accuracy: 38.89%
+Training Epoch 6/10: 100% 3/3 [00:01<00:00,  1.94it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.82it/s]
+Epoch 6/10, Train Loss: 1.5427, Validation Loss: 1.7757, Accuracy: 22.22%
+Training Epoch 7/10: 100% 3/3 [00:01<00:00,  1.90it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.79it/s]
+Epoch 7/10, Train Loss: 1.4463, Validation Loss: 1.7601, Accuracy: 27.78%
+Training Epoch 8/10: 100% 3/3 [00:01<00:00,  1.94it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.88it/s]
+Epoch 8/10, Train Loss: 1.3363, Validation Loss: 1.7443, Accuracy: 33.33%
+Training Epoch 9/10: 100% 3/3 [00:01<00:00,  1.92it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.87it/s]
+Epoch 9/10, Train Loss: 1.2158, Validation Loss: 1.7220, Accuracy: 33.33%
+Training Epoch 10/10: 100% 3/3 [00:01<00:00,  1.93it/s]
+Validation: 100% 1/1 [00:00<00:00, 16.77it/s]
+Epoch 10/10, Train Loss: 1.0845, Validation Loss: 1.6875, Accuracy: 38.89%
+=== DistilBERT - 1p training completed ===
 ```
 
 ## LargeBERT
 
 ### 100p
 ```
+=== train LargeBERT - 100p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 507/507 [15:59<00:00,  1.89s/it]
+Validation: 100% 57/57 [00:34<00:00,  1.65it/s]
+Epoch 1/10, Train Loss: 0.4365, Validation Loss: 0.1460, Accuracy: 95.33%
+Training Epoch 2/10: 100% 507/507 [15:57<00:00,  1.89s/it]
+Validation: 100% 57/57 [00:34<00:00,  1.65it/s]
+Epoch 2/10, Train Loss: 0.1094, Validation Loss: 0.0951, Accuracy: 96.72%
+Training Epoch 3/10: 100% 507/507 [15:57<00:00,  1.89s/it]
+Validation: 100% 57/57 [00:34<00:00,  1.65it/s]
+Epoch 3/10, Train Loss: 0.0793, Validation Loss: 0.1239, Accuracy: 95.28%
+Training Epoch 4/10: 100% 507/507 [15:57<00:00,  1.89s/it]
+Validation: 100% 57/57 [00:34<00:00,  1.65it/s]
+Epoch 4/10, Train Loss: 0.0618, Validation Loss: 0.1173, Accuracy: 96.61%
+Training Epoch 5/10: 100% 507/507 [15:57<00:00,  1.89s/it]
+Validation: 100% 57/57 [00:34<00:00,  1.65it/s]
+Epoch 5/10, Train Loss: 0.0569, Validation Loss: 0.1279, Accuracy: 96.94%
+Early stopping triggered after epoch 5
+=== LargeBERT - 100p training completed ===
 ```
 
 ### 10p
 ```
+=== train LargeBERT - 10p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 51/51 [01:35<00:00,  1.88s/it]
+Validation: 100% 6/6 [00:03<00:00,  1.73it/s]
+Epoch 1/10, Train Loss: 1.6343, Validation Loss: 1.2827, Accuracy: 52.78%
+Training Epoch 2/10: 100% 51/51 [01:35<00:00,  1.88s/it]
+Validation: 100% 6/6 [00:03<00:00,  1.74it/s]
+Epoch 2/10, Train Loss: 0.8193, Validation Loss: 0.6713, Accuracy: 75.00%
+Training Epoch 3/10: 100% 51/51 [01:35<00:00,  1.88s/it]
+Validation: 100% 6/6 [00:03<00:00,  1.74it/s]
+Epoch 3/10, Train Loss: 0.3678, Validation Loss: 0.5577, Accuracy: 83.33%
+Training Epoch 4/10: 100% 51/51 [01:35<00:00,  1.88s/it]
+Validation: 100% 6/6 [00:03<00:00,  1.74it/s]
+Epoch 4/10, Train Loss: 0.1503, Validation Loss: 0.4285, Accuracy: 86.11%
+Training Epoch 5/10: 100% 51/51 [01:35<00:00,  1.88s/it]
+Validation: 100% 6/6 [00:03<00:00,  1.74it/s]
+Epoch 5/10, Train Loss: 0.0563, Validation Loss: 0.4928, Accuracy: 85.00%
+Training Epoch 6/10: 100% 51/51 [01:35<00:00,  1.88s/it]
+Validation: 100% 6/6 [00:03<00:00,  1.74it/s]
+Epoch 6/10, Train Loss: 0.0287, Validation Loss: 0.4672, Accuracy: 85.56%
+Training Epoch 7/10: 100% 51/51 [01:35<00:00,  1.88s/it]
+Validation: 100% 6/6 [00:03<00:00,  1.74it/s]
+Epoch 7/10, Train Loss: 0.0211, Validation Loss: 0.4906, Accuracy: 88.33%
+Early stopping triggered after epoch 7
+=== LargeBERT - 10p training completed ===
 ```
 
 ### 1p
 ```
+=== train LargeBERT - 1p ===
+  checkpoint = torch.load(model_path)
+No checkpoint found. Starting training from scratch...
+Training Epoch 1/10: 100% 6/6 [00:09<00:00,  1.60s/it]
+Validation: 100% 1/1 [00:00<00:00,  2.82it/s]
+Epoch 1/10, Train Loss: 1.8204, Validation Loss: 1.7641, Accuracy: 27.78%
+Training Epoch 2/10: 100% 6/6 [00:09<00:00,  1.61s/it]
+Validation: 100% 1/1 [00:00<00:00,  2.82it/s]
+Epoch 2/10, Train Loss: 1.5960, Validation Loss: 1.7632, Accuracy: 11.11%
+Training Epoch 3/10: 100% 6/6 [00:09<00:00,  1.61s/it]
+Validation: 100% 1/1 [00:00<00:00,  2.82it/s]
+Epoch 3/10, Train Loss: 1.4522, Validation Loss: 1.7788, Accuracy: 16.67%
+Training Epoch 4/10: 100% 6/6 [00:09<00:00,  1.60s/it]
+Validation: 100% 1/1 [00:00<00:00,  2.79it/s]
+Epoch 4/10, Train Loss: 1.3350, Validation Loss: 1.7934, Accuracy: 16.67%
+Training Epoch 5/10: 100% 6/6 [00:09<00:00,  1.61s/it]
+Validation: 100% 1/1 [00:00<00:00,  2.82it/s]
+Epoch 5/10, Train Loss: 1.1159, Validation Loss: 1.7812, Accuracy: 16.67%
+Early stopping triggered after epoch 5
+=== LargeBERT - 1p training completed ===
 ```
