@@ -825,7 +825,7 @@ Early stopping triggered after epoch 5
 
 ## 5p data Training Result
 
-# BERTsmall
+### BERTsmall
 ```
 === train BERTsmall - 5p ===
   checkpoint = torch.load(model_path)
@@ -885,7 +885,7 @@ Early stopping triggered after epoch 15
 === BERTsmall - 5p training completed ===
 ```
 
-# SingleTransferBERT
+### SingleTransferBERT
 ```
 === train SingleTransferBERT - 5p ===
   checkpoint = torch.load(model_path)
@@ -921,7 +921,7 @@ Early stopping triggered after epoch 9
 === SingleTransferBERT - 5p training completed ===
 ```
 
-# BERTlarge
+### BERTlarge
 ```
 === train BERTlarge - 5p ===
   checkpoint = torch.load(model_path)
