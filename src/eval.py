@@ -49,14 +49,16 @@ def evaluation(models, device):
     os.makedirs("predictions", exist_ok=True)
 
     for model_class, model_config in models.items():
-        for train_data_idx in range(3):
+        for train_data_idx in range(4):
             model_name = model_class.__name__
-            data_size = ["100p", "10p", "1p"][train_data_idx]
+            data_size = ["100p", "10p", "5p", "1p"][train_data_idx]
             eval_model_path = f"models/{model_name}_{data_size}.pt"
             result_file_path = f"predictions/{model_name}_{data_size}_prediction.csv"
             
             if os.path.exists(result_file_path):
                 print(f"{result_file_path} already exists")
+            elif not os.path.exists(eval_model_path):
+                continue
             else:
                 model = model_class()
                 tokenizer = AutoTokenizer.from_pretrained(model_config.MODEL_NAME)
