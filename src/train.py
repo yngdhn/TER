@@ -139,12 +139,20 @@ def main():
         BERTsmall: BERTsmallConfig,
         BERTlarge: BERTlargeConfig,
     }
-    train_data_list = [Paths.TRAIN_DATA_100p, Paths.TRAIN_DATA_10p, Paths.TRAIN_DATA_1p]
+
+    additional_models = [SingleTransferBERT, BERTsmall, BERTlarge]
 
     for model_class, model_config in models.items():
+        if model_class in additional_models:
+            train_data_list = [Paths.TRAIN_DATA_100p, Paths.TRAIN_DATA_10p, Paths.TRAIN_DATA_5p, Paths.TRAIN_DATA_1p]
+            data_size_list = ["100p", "10p", "5p", "1p"]
+        else:
+            train_data_list = [Paths.TRAIN_DATA_100p, Paths.TRAIN_DATA_10p, Paths.TRAIN_DATA_1p]
+            data_size_list = ["100p", "10p", "1p"]
+
         for train_data_idx, train_data in enumerate(train_data_list):
             model_name = model_class.__name__
-            data_size = ["100p", "10p", "1p"][train_data_idx]
+            data_size = data_size_list[train_data_idx]
             description = f"{model_name} - {data_size}"
             model_path = f"models/{model_name}_{data_size}.pt"
 
